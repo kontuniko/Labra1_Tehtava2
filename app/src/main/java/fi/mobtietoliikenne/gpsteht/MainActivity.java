@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     private double longitude;
     private FusedLocationProviderClient fusedLocationClient;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         tvCountry = findViewById(R.id.tvCountry);
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
-
         btnGetLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
                 locationFunction();
             }
         });
-
     }
 
     private void locationFunction() {
@@ -86,13 +83,10 @@ public class MainActivity extends AppCompatActivity {
                 Manifest.permission.ACCESS_COARSE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
 
-            // Permission is not granted
-            // Should we show an explanation?
+            // Permission is not granted then do this new permission ask
             if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
                     Manifest.permission.ACCESS_COARSE_LOCATION)) {
-                // Show an explanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
+                // User information: After the user sees the explanation, try again to request the permission.
 
                 new AlertDialog.Builder(this)
                         .setTitle("Required Location Permission")
@@ -120,9 +114,6 @@ public class MainActivity extends AppCompatActivity {
                         new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
                         MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
 
-                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-                // app-defined int constant. The callback method gets the
-                // result of the request.
             }
         } else {
             // Permission has already been granted
@@ -142,7 +133,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
         }
-
     }
 
     @Override
@@ -153,6 +143,5 @@ public class MainActivity extends AppCompatActivity {
         }else{
 
         }
-
     }
 }
